@@ -1,6 +1,7 @@
+# Use an official Node runtime based on Alpine as a parent image
 FROM node:14-alpine
 
-# Create app directory
+# Set the working directory to /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
@@ -12,11 +13,14 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Run tests
-RUN npm test
+# Build the application
+RUN npm run build
 
-# Expose the application port
+# Install serve to serve the application in production
+RUN npm install -g serve
+
+# Expose the port that serve will use
 EXPOSE 8080
 
-# Start the application
-CMD [ "node", "server.js" ]
+# Command to run the application using serve
+CMD ["serve", "-s", "build", "-l", "8080"]

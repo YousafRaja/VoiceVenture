@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: voiceventure
-          image: 472829450908.dkr.ecr.us-east-2.amazonaws.com/voiceventure:1.1
+          image: 472829450908.dkr.ecr.us-east-2.amazonaws.com/voiceventure:<IMAGE_TAG>
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -39,7 +39,7 @@ jobs:
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REPOSITORY: voiceventure
-        IMAGE_TAG: 1.1
+        IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
@@ -48,6 +48,9 @@ jobs:
       run: aws eks update-kubeconfig --name voiceventure
     
     - name: Deploy to EKS
+      env:
+        SHA: ${{ github.sha }}
       run: |
+        sed -i "s|<IMAGE_TAG>|${SHA}|g" deployment.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml

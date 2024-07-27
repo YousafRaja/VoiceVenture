@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voiceventure
+  labels:
+    app: voiceventure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: voiceventure
+  template:
+    metadata:
+      labels:
+        app: voiceventure
+    spec:
+      containers:
+        - name: voiceventure
+          image: 472829450908.dkr.ecr.us-east-2.amazonaws.com/voiceventure:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080

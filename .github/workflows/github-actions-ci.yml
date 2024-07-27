@@ -18,6 +18,12 @@ jobs:
         version: 'v1.24.0' # default is latest stable
       id: install
 
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test      
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:

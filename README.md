@@ -34,7 +34,7 @@ eksctl create cluster --name voiceventure --region us-east-2 --nodegroup-name li
 3. Enter ```AWS_ACCESS_KEY_ID``` for the Name, enter the corresponding value in Secret* and click Add secret.
 4. Repeat the above instructions for ```AWS_SECRET_ACCESS_KEY```.
 5. Clone your repo locally
-6. Copy the files in this repo to your locally
+6. Copy the files in this repo to your local repo
 7. In deployment.yaml, replace `472829450908` with your AWS Account Id.
 
 ### 4. Deploy Load Balancer
@@ -52,7 +52,7 @@ Create a Certificate and Route53 Records
 2. Under Fully qualified domain name, enter the registered domain name, click Request
 4. Certificate Manager > Your requested certificate > Create record in Route53. You should see the Route53 record from the previous step appear in the search.
 5. Click Create records, this will add the CNAME record to your Route53 record.
-6. It will take some time for Pending validation to complete.
+6. It will take some time for Pending validation to complete, in my case it would take 30 mins - 1 hour if everything was configured correctly.
 7. Navigate to Route53 > Hosted zones > Created hosted zone > Create record
 8. Enable Alias, pick the following options in the dropdown
 - Alias to Application and Classic Load Balancer.
@@ -94,9 +94,11 @@ Create a Certificate and Route53 Records
 - Autoformatted code speeds up development and PR reviews.
 ### Monitoring 
 There are several options here, I would pick one of the below.
+
 Monitoring with AWS:
 - Pros: Typically easier to get started as it's integrated with the other services.
 - Cons: Vendor lock-in. Will require using additional AWS services which will make it harder to switch to a different solution in the future.
+  
 Monitoring with Datadog:
 - Pros: Significantly better UI and overall experience compared to AWS which makes it easier to debug.
 - Cons: Requires more upfront time investment to setup. 

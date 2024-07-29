@@ -95,6 +95,8 @@ Create a Certificate and Route53 Records
 - When registering a domain on Route53, a Hosted zone and Route53 record will automatically be created with the name servers for your domain. Do not delete this record and attempt to re-create it as this will result in a new set of name servers on Route53 while the internet will still expect the original set.
  
 # Ideas for improvement
+### Migrate from Classic Load Balancer to Application Load Balancer
+- Classic Load Balancer is simpler to setup and deploy but it's missing Websocket support which is a must for any voice-based application
 ### Deploy to non-production environments  
 - A seperate AWS Account should be created for the non-production environments. Github actions can be configured to deploy to each account as needed.
 ### Seperate Deployment and Testing
@@ -104,7 +106,7 @@ Create a Certificate and Route53 Records
 ### Code Linting 
 - Autoformatted code speeds up development and PR reviews.
 ### Monitoring 
-There are several options here, I would pick one of the below.
+There are several options here.
 
 Monitoring with AWS:
 - Pros: Typically easier to get started as it's integrated with the other services.
@@ -114,6 +116,6 @@ Monitoring with Datadog:
 - Pros: Significantly better UI and overall experience compared to AWS which makes it easier to debug.
 - Cons: Requires more upfront time investment to setup. 
 
- 
+
 
 
